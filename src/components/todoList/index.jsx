@@ -2,14 +2,21 @@ import React, {useState} from "react";
 
 export default function TodoList ({todo}) {
 
+    const [checked, setChecked] = useState(true);
+
+    const toggleCheckBox = () =>{
+        setChecked((prevState) => !prevState);
+    }
+
+
     return(
        
         <div className="todoList">
         <div className="todoListItem todoListItemContent">
           <span>
-            <input type="checkbox" id="todoName"></input>
+            <input type="checkbox" id="todoName" onChange={toggleCheckBox}></input>
             <label htmlFor="todoName" id="todoCheckBox">
-              {todo.name}
+                {checked? <span>{todo.name}</span>: <del>{todo.name}</del>}
             </label>
           </span>
 
