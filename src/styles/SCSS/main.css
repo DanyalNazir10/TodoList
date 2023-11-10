@@ -8,6 +8,8 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   width: 700px;
   min-width: 450px;
   background-color: #ffffff;
@@ -32,6 +34,7 @@ body {
   border-color: #0014f8 !important;
 }
 .container .formDivider {
+  width: 100%;
   margin-top: 5%;
   margin-bottom: 5%;
   border: 1px solid #f0f0f0;

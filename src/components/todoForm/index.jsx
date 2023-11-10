@@ -20,6 +20,14 @@ export default function TodoForm() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
+  const updateTodo = (id, newName) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, name: newName } : todo
+      )
+    );
+  };
+
   return (
     <>
       <form onSubmit={addTodo}>
@@ -34,7 +42,13 @@ export default function TodoForm() {
       </form>
 
       {todos.map((todo) => {
-        return <TodoList todo={todo} deleteTodo = {deleteTodo} />;
+        return (
+          <TodoList
+            todo={todo}
+            deleteTodo={deleteTodo}
+            updateTodo={updateTodo}
+          />
+        );
       })}
     </>
   );
