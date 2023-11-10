@@ -22,17 +22,37 @@ body {
   font-size: 40px;
   font-weight: 700;
 }
-.container input {
-  width: 100%;
+.container form input {
+  width: 98%;
   border: 2px solid #f0f0f0;
-  padding: 10px 5px;
+  padding: 5px;
   font-size: 20px;
 }
-.container input:focus {
+.container form input:focus {
   border-color: #0014f8 !important;
 }
 .container .formDivider {
   margin-top: 5%;
   margin-bottom: 5%;
   border: 1px solid #f0f0f0;
+}
+.container .todoList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.container .todoList .todoListItemContent {
+  display: flex;
+  justify-content: space-between;
+}
+.container .todoList .todoListItemContent .todoButtons .todoButtonItem {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.container .todoList .todoDivider {
+  width: 100%;
+  flex-direction: column;
+  border: 1px solid black;
 }/*# sourceMappingURL=main.css.map */
