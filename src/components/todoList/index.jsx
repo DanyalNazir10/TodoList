@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-export default function TodoList ({todo}) {
+export default function TodoList ({todo, deleteTodo}) {
 
     const [checked, setChecked] = useState(true);
-
+    
     const toggleCheckBox = () =>{
         setChecked((prevState) => !prevState);
+        todo.completed = checked;
     }
-
 
     return(
        
@@ -28,7 +28,7 @@ export default function TodoList ({todo}) {
                 style={{ color: "#0c0d0d" }}
               ></i>
             </button>
-            <button className="todoButtonItem deleteButton">
+            <button className="todoButtonItem deleteButton" onClick={()=> deleteTodo(todo.id)}>
               {" "}
               <i
                 className="fa-solid fa-trash-can"

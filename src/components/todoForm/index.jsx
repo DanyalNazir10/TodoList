@@ -16,6 +16,9 @@ export default function TodoForm() {
     }
   };
 
+  const deleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
 
   return (
     <>
@@ -31,7 +34,7 @@ export default function TodoForm() {
       </form>
 
       {todos.map((todo) => {
-        return <TodoList todo={todo} />;
+        return <TodoList todo={todo} deleteTodo = {deleteTodo} />;
       })}
     </>
   );
