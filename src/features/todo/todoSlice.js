@@ -27,7 +27,7 @@ export const todoSlice = createSlice({
           return todo.id === action.payload.id
             ? {
                 ...todo,
-                name: action.payload.newName,
+                ...action.payload,
               }
             : todo;
         }),

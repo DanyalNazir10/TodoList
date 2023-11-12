@@ -26,8 +26,8 @@ export const TodoForm = () => {
     dispatch(deleteTodo(id));
   };
 
-  const updateTodoHandler = (id, newName) => {
-    dispatch(updateTodo({id, newName}));
+  const updateTodoHandler = (id, newName, completed) => {
+    dispatch(updateTodo({id, name: newName, completed}));
   };
 
   return (
