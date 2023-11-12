@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TodoList({ todo, deleteTodo, updateTodo }) {
+export const TodoList = ({ todo, deleteTodo, updateTodo }) => {
   const [checked, setChecked] = useState(true);
   const [newName, setNewName] = useState(todo.name);
   const [editing, setEditing] = useState(false);

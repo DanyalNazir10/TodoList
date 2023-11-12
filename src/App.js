@@ -1,5 +1,5 @@
 import "./styles/SCSS/main.css";
-import TodoForm from "../src/components/todoForm";
+import {TodoForm} from "../src/components/todoForm";
 
 function App() {
   return (
