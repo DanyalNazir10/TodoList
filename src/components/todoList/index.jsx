@@ -8,7 +8,6 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
 
   const toggleCheckBox = () => {
     setChecked((prevState) => !prevState);
-    todo.completed = checked;
   };
 
   const editTodo = (e) => {
