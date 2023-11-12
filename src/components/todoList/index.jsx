@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-export const TodoList = ({ todo, deleteTodo, updateTodo }) => {
+export const TodoList = ({ todo, deleteTodoHandler, updateTodo }) => {
+
   const [checked, setChecked] = useState(true);
   const [newName, setNewName] = useState(todo.name);
   const [editing, setEditing] = useState(false);
@@ -54,7 +55,7 @@ export const TodoList = ({ todo, deleteTodo, updateTodo }) => {
           </button>
           <button
             className="todoButtonItem deleteButton"
-            onClick={() => deleteTodo(todo.id)}
+            onClick={() => deleteTodoHandler(todo.id)}
           >
             {" "}
             <i

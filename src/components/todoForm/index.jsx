@@ -10,6 +10,7 @@ import { TodoList } from "../../../src/components/todoList";
 export const TodoForm = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+
   const [name, setName] = useState("");
 
   const addTodoHandler = (e) => {
@@ -21,8 +22,8 @@ export const TodoForm = () => {
     }
   };
 
-  const deleteTodo = (id) => {
-    dispatch();
+  const deleteTodoHandler = (id) => {
+    dispatch(deleteTodo(id));
   };
 
   const updateTodo = (id, newName) => {
@@ -47,7 +48,7 @@ export const TodoForm = () => {
           <TodoList
             key={todo.id}
             todo={todo}
-            deleteTodo={deleteTodo}
+            deleteTodoHandler={deleteTodoHandler}
             updateTodo={updateTodo}
           />
         );
