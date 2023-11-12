@@ -11,7 +11,7 @@ export const todoSlice = createSlice({
     addTodo: (state, action) => {
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        todos: [...state.todos, {id: nanoid(), createdAt: new Date(), completed: false, name: action.payload}],
       };
     },
     deleteTodo: (state, action) => {

@@ -1,36 +1,37 @@
 import React, { useState } from "react";
-import {TodoList} from "../../../src/components/todoList";
+import { UseSelector, useDispatch, useSelector } from "react-redux";
+import {
+  addTodo,
+  deleteTodo,
+  updateTodo,
+} from "../../../src/features/todo/todoSlice";
+import { TodoList } from "../../../src/components/todoList";
 
 export const TodoForm = () => {
-  const [todos, setTodos] = useState([]);
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
 
-  const addTodo = (e) => {
+  const addTodoHandler = (e) => {
     e.preventDefault();
+
     if (name.trim() !== "") {
-      setTodos((prevTodos) => [
-        ...prevTodos,
-        { id: Date.now(), name, createdAt: new Date(), completed: false },
-      ]);
+      dispatch(addTodo(name));
       setName("");
     }
   };
 
   const deleteTodo = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    dispatch();
   };
 
   const updateTodo = (id, newName) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, name: newName } : todo
-      )
-    );
+    dispatch();
   };
 
   return (
     <>
-      <form onSubmit={addTodo}>
+      <form onSubmit={addTodoHandler}>
         <input
           type="text"
           name="addTodoItem"
@@ -44,6 +45,7 @@ export const TodoForm = () => {
       {todos.map((todo) => {
         return (
           <TodoList
+            key={todo.id}
             todo={todo}
             deleteTodo={deleteTodo}
             updateTodo={updateTodo}
@@ -52,4 +54,4 @@ export const TodoForm = () => {
       })}
     </>
   );
-}
+};
