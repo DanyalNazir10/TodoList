@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const TodoList = ({ todo, deleteTodoHandler, updateTodo }) => {
+export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
 
   const [checked, setChecked] = useState(true);
   const [newName, setNewName] = useState(todo.name);
@@ -13,7 +13,7 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodo }) => {
 
   const editTodo = (e) => {
     if (e.key === "Enter") {
-      updateTodo(todo.id, newName);
+      updateTodoHandler(todo.id, newName);
       setEditing(false);
     }
   };

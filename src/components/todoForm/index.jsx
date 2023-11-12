@@ -17,7 +17,7 @@ export const TodoForm = () => {
     e.preventDefault();
 
     if (name.trim() !== "") {
-      dispatch(addTodo(name));
+      dispatch(addTodo({name: name, completed: false}));
       setName("");
     }
   };
@@ -26,8 +26,8 @@ export const TodoForm = () => {
     dispatch(deleteTodo(id));
   };
 
-  const updateTodo = (id, newName) => {
-    dispatch();
+  const updateTodoHandler = (id, newName) => {
+    dispatch(updateTodo({id, newName}));
   };
 
   return (
@@ -49,7 +49,7 @@ export const TodoForm = () => {
             key={todo.id}
             todo={todo}
             deleteTodoHandler={deleteTodoHandler}
-            updateTodo={updateTodo}
+            updateTodoHandler={updateTodoHandler}
           />
         );
       })}
