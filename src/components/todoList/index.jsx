@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {updateCompleteStatus} from "../../../src/index"
 
 export const TodoList = ({ todo, deleteTodo, updateTodo }) => {
   const [checked, setChecked] = useState(true);
@@ -7,7 +8,8 @@ export const TodoList = ({ todo, deleteTodo, updateTodo }) => {
 
   const toggleCheckBox = () => {
     setChecked((prevState) => !prevState);
-    todo.completed = checked;
+    updateCompleteStatus(todo, checked);
+    console.log(todo)
   };
 
   const editTodo = (e) => {
