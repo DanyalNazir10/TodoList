@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import todoReducer from "../../src/features/todo/todoSlice";
-import mySaga from "../../src/sagas";
+import todoSaga from "../../src/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,4 +12,4 @@ export const store = configureStore({
     getDefaultMiddleware().concat(sagaMiddleware),
 });
 
-sagaMiddleware.run();
+sagaMiddleware.run(todoSaga);

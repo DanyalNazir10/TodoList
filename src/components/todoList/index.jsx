@@ -17,7 +17,6 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
       setEditing(false);
     }
   };
-
   return (
     <div className="todoList">
       <div className="todoListItem todoListItemContent">
@@ -37,8 +36,12 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
             />
           ) : (
             <label htmlFor="todoName" id="todoCheckBox">
-              {checked ? <span>{todo.name}</span> : <del>{todo.name}</del>}
-            </label>
+            {checked ? (
+              <span>{Object.getOwnPropertyNames(todo).includes("name")? todo.name : todo.todo}</span>
+            ) : (
+              <del>{todo.name}</del>
+            )}
+          </label>
           )}
         </span>
 

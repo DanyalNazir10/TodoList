@@ -10,7 +10,6 @@ export const TodoForm = ({todos, addTodoHandler }) => {
     }
     e.target[0].value = "";
   };
-
   return (
     <>
       <form onSubmit={addTodoHandlerWrapper}>
