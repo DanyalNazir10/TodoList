@@ -1,37 +1,19 @@
-import React, { useState } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
-import {
-  addTodo,
-  deleteTodo,
-  updateTodo,
-} from "../../../src/features/todo/todoSlice";
-import { TodoList } from "../../../src/components/todoList";
+import TodoList from "../../../src/containers/todoListContainer";
 
-export const TodoForm = () => {
-  const todos = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
+export const TodoForm = ({todos, addTodoHandler }) => {
 
-  const addTodoHandler = (e) => {
+  const addTodoHandlerWrapper = (e) => {
     e.preventDefault();
     const name = e.target[0].value;
-    
     if (name.trim() !== "") {
-      dispatch(addTodo({name: name, completed: false}));
+      addTodoHandler({name: name, completed: false});
     }
     e.target[0].value = "";
   };
 
-  const deleteTodoHandler = (id) => {
-    dispatch(deleteTodo(id));
-  };
-
-  const updateTodoHandler = (id, newName, completed) => {
-    dispatch(updateTodo({id, name: newName, completed}));
-  };
-
   return (
     <>
-      <form onSubmit={addTodoHandler}>
+      <form onSubmit={addTodoHandlerWrapper}>
         <input
           type="text"
           name="addTodoItem"
@@ -45,8 +27,6 @@ export const TodoForm = () => {
           <TodoList
             key={todo.id}
             todo={todo}
-            deleteTodoHandler={deleteTodoHandler}
-            updateTodoHandler={updateTodoHandler}
           />
         );
       })}
