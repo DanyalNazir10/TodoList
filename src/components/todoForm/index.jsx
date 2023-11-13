@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {TodoList} from "../../../src/components/todoList";
+import { TodoList } from "../../../src/components/todoList";
 
 export const TodoForm = () => {
   const [todos, setTodos] = useState([]);
@@ -44,6 +44,7 @@ export const TodoForm = () => {
       {todos.map((todo) => {
         return (
           <TodoList
+            key={todo.id}
             todo={todo}
             deleteTodo={deleteTodo}
             updateTodo={updateTodo}
@@ -52,4 +53,4 @@ export const TodoForm = () => {
       })}
     </>
   );
-}
+};
