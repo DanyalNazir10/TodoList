@@ -11,15 +11,14 @@ export const TodoForm = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
-
   const addTodoHandler = (e) => {
     e.preventDefault();
-
+    const name = e.target[0].value;
+    
     if (name.trim() !== "") {
       dispatch(addTodo({name: name, completed: false}));
-      setName("");
     }
+    e.target[0].value = "";
   };
 
   const deleteTodoHandler = (id) => {
@@ -37,9 +36,7 @@ export const TodoForm = () => {
           type="text"
           name="addTodoItem"
           id="inputTodo"
-          value={name}
           placeholder="Input task name and then enter to add"
-          onChange={(e) => setName(e.target.value)}
         />
       </form>
 
