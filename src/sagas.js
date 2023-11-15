@@ -4,7 +4,8 @@ import { getTodosSuccess } from "../src/features/todo/todoSlice";
 function* workGetTodosFetch() {
   try {
     const todos = yield call(() =>
-      fetch("https://dummyjson.com/todos").then((res) => res.json())
+      // fetch("https://dummyjson.com/todos").then((res) => res.json())
+      fetch("/api").then((res) => res.json())
     );
 
     yield put(getTodosSuccess(todos.todos.slice(0,5)));
