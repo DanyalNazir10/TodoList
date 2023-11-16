@@ -2,18 +2,18 @@ import React, { useState } from "react";
 
 export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
 
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(!todo.completed);
   const [newName, setNewName] = useState(todo.name);
   const [editing, setEditing] = useState(false);
 
   const toggleCheckBox = () => {
     setChecked((prevState) => !prevState);
-    updateTodoHandler(todo.id, newName, checked);
+    updateTodoHandler(todo._id, newName, checked);
   };
 
   const editTodo = (e) => {
     if (e.key === "Enter") {
-      updateTodoHandler(todo.id, newName);
+      updateTodoHandler(todo._id, newName);
       setEditing(false);
     }
   };
@@ -25,6 +25,7 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
             type="checkbox"
             id="todoName"
             onChange={toggleCheckBox}
+            checked = {todo.completed}
           ></input>
 
           {editing ? (
@@ -36,7 +37,7 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
             />
           ) : (
             <label htmlFor="todoName" id="todoCheckBox">
-            {checked ? (
+            {!todo.completed ? (
               <span>{todo?.name ?? todo?.todo }</span>
             ) : (
               <del>{todo.name}</del>
@@ -58,7 +59,7 @@ export const TodoList = ({ todo, deleteTodoHandler, updateTodoHandler }) => {
           </button>
           <button
             className="todoButtonItem deleteButton"
-            onClick={() => deleteTodoHandler(todo.id)}
+            onClick={() => deleteTodoHandler(todo._id)}
           >
             {" "}
             <i

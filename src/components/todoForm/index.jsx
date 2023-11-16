@@ -20,15 +20,14 @@ export const TodoForm = ({todos, addTodoHandler }) => {
           placeholder="Input task name and then enter to add"
         />
       </form>
-
-      {todos.map((todo) => {
+      {todos? (todos.map((todo) => {
         return (
           <TodoList
-            key={todo.id}
+            key={todo._id}
             todo={todo}
           />
         );
-      })}
+      })) : <div style={{marginTop: "15px"}}>No Todos yet</div>}
     </>
   );
 };

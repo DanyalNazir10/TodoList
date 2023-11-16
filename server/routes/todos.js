@@ -1,12 +1,16 @@
-const express = require ("express");
+const express = require("express");
+const {
+  getTodos,
+  createTodo,
+  deleteTodo,
+  updateTodo,
+} = require("../../server/controllers/todos");
+
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    res.json({"todos": [{name: "todo1", completed: "false"}, {name: "todo2", completed:false}, {name: "myTodo", completed:false}]});
-  });
-  
-  router.post('/ ', async (req, res) => {
-   console.log("In add todos post")
-  });
-  
-  module.exports = router;
+router.get("/", getTodos);
+router.post("/", createTodo);
+router.delete("/:id", deleteTodo);
+router.put("/:id", updateTodo);
+
+module.exports = router;

@@ -1,10 +1,16 @@
 const express = require("express");
-const todoRoutes = require('./routes/todos');
+const bodyParser = require("body-parser");
+const connectDB = require("../server/middleware/mongodb/connection");
+const todoRoutes = require("./routes/todos");
 
 const app = express();
 
-app.use('/api/todos', todoRoutes);
+app.use(bodyParser.json());
 
-app.listen(5000, ()=> {
-    console.log("Listening to port 5000");
-})
+connectDB();
+
+app.use("/api/todos", todoRoutes);
+
+app.listen(5000, () => {
+  console.log("Listening to port 5000");
+});

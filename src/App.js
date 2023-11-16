@@ -1,13 +1,13 @@
 import "./styles/SCSS/main.css";
 import TodoForm from "../src/containers/todoFormContainer";
-import { getTodosFetch } from "./features/todo/todoSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { TodoActions } from "../src/utils/enums";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getTodosFetch());
+    dispatch({ type: TodoActions.REQUEST_GET_TODOS });
   }, []);
 
   return (
