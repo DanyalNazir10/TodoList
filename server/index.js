@@ -1,9 +1,9 @@
 const express = require("express");
+const todoRoutes = require('./routes/todos');
+
 const app = express();
 
-app.get("/api", (req, res) => {
-    res.json({"todos": [{name: "todo1", completed: "false"}, {name: "todo2", completed:false}]});
-})
+app.use('/api/todos', todoRoutes);
 
 app.listen(5000, ()=> {
     console.log("Listening to port 5000");
